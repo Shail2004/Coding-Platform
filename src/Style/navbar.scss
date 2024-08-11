@@ -1,0 +1,38 @@
+@import "colors";
+.contest{
+    font-family: "Rubik Mono One";
+    font-weight: 300;
+    &:hover{
+        border-bottom: solid $mainColor 2.5px;
+        
+    }
+}
+.last{
+    border-radius: 0 10px 10px 0;
+    padding: 10px;
+    
+    transition: all 0.3s ;
+    background-color: transparent;
+    border-left: solid $mainColor 3px;
+    color: $mainColor;
+    &:hover{
+        background-color: $mainColor;
+        color: black;
+    }
+}
+.logo{
+    color: $mainColor;
+}
+.login{
+    padding: 10px;
+    &:hover{
+        color: $mainColor;
+        
+            background-color: $mainColor;
+            color: black;
+
+            border-radius: 10px 0px 0px 10px;
+  
+        
+    }
+}
