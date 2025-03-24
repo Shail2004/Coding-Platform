@@ -41,7 +41,7 @@ const Header = () => {
   return (
     <>
      <HStack h="20" justifyContent={"space-between"} background={"transparent"}>
-        <HStack marginLeft={"4"} className='logo' as={Link} to={isAuthenticated ? "/playground" : "/"}>
+        <HStack marginLeft={"4"} className='logo' as={Link} to={isAuthenticated ? "/problems" : "/"}>
           <FaFreeCodeCamp size={"25"}/>
           <Text size={"2rem"} >CodeShastra</Text>
         </HStack>
@@ -70,7 +70,7 @@ const Header = () => {
                 />
               </MenuButton>
               <MenuList>
-                <MenuItem as={Link} to="/playground">My Dashboard</MenuItem>
+                <MenuItem as={Link} to="/problems">My Dashboard</MenuItem>
                 <MenuItem onClick={handleLogout}>Logout</MenuItem>
               </MenuList>
             </Menu>
