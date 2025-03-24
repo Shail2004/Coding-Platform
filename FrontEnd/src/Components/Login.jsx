@@ -55,8 +55,8 @@ const Login = () => {
         isClosable: true,
       });
 
-      // Redirect to home page
-      navigate('/playground');
+      // Redirect to problems page
+      navigate('/problems');
     } catch (error) {
       toast({
         title: 'Error',
