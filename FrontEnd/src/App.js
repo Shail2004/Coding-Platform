@@ -42,6 +42,9 @@ const App = () => {
         <Router>
           <Header />
           <Routes>
+            {/* Redirect root to login */}
+            <Route path="/" element={<Navigate to="/login" />} />
+            
             {/* Public Routes */}
             <Route path='/login' element={<Login />} />
             <Route path='/signup' element={<Signup />} />

@@ -19,21 +19,30 @@ export const AuthProvider = ({ children }) => {
           const storedUser = localStorage.getItem('user');
           if (storedUser) {
             setUser(JSON.parse(storedUser));
+            setLoading(false);
           } else {
             // If user data not in localStorage, fetch from API
-            const response = await axios.get('http://localhost:8000/api/auth/me', {
-              headers: {
-                'x-auth-token': token
-              }
-            });
-            setUser(response.data);
+            try {
+              const response = await axios.get('http://localhost:8000/api/auth/me', {
+                headers: {
+                  'x-auth-token': token
+                }
+              });
+              setUser(response.data);
+            } catch (apiError) {
+              console.error('Failed to validate token:', apiError);
+              localStorage.removeItem('token');
+            } finally {
+              setLoading(false);
+            }
           }
+        } else {
+          setLoading(false);
         }
       } catch (error) {
         console.error('Auth check error:', error);
         localStorage.removeItem('token');
         localStorage.removeItem('user');
-      } finally {
         setLoading(false);
       }
     };
