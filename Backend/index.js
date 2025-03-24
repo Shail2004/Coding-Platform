@@ -4,11 +4,30 @@
 const express = require("express");
 const cors = require("cors");
 const Axios = require("axios");
+const mongoose = require("mongoose");
 const app = express();
 const PORT = 8000;
 
+// Import routes
+const authRoutes = require('./routes/auth');
+
+// Middleware
 app.use(cors());
 app.use(express.json());
+
+// Connect to MongoDB
+mongoose.connect('mongodb://localhost:27017/codingPlatform', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+.then(() => console.log('MongoDB connected...'))
+.catch(err => {
+  console.error('MongoDB connection error:', err);
+  process.exit(1);
+});
+
+// Routes
+app.use('/api/auth', authRoutes);
 
 app.post("/compile", (req, res) => {
     // getting the required data from the request
